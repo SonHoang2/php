@@ -6,17 +6,10 @@
 </head>
 
 <body>
-    <h1>Login</h1>
-    <form action="login.php" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <input type="submit" value="Login">
-    </form>
-    <?php
-    echo "Hello World!";
-    ?>
+    <a href="register.php">Register</a>
+    <a href="login.php">Login</a>
+    <a href="changePassword.php">change password</a>
+    <a href="search.php">Search</a>
 </body>
 
 </html>
