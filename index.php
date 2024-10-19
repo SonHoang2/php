@@ -10,6 +10,7 @@
     <a href="login.php">Login</a>
     <a href="changePassword.php">change password</a>
     <a href="search.php">Search</a>
+    <a href="addProduct.php">Add Product</a>
 </body>
 
 </html>

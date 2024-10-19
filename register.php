@@ -10,23 +10,23 @@
     <form action="register.php" method="post">
         <label for="username">Username:</label>
         <br>
-        <input type="text" id="username" name="username" value="sonhoang">
+        <input type="text" id="username" name="username">
         <br>
         <label for="email">Email:</label>
         <br>
-        <input type="text" id="email" name="email" value="2@gmail.com">
+        <input type="text" id="email" name="email">
         <br>
         <label for="phone">Phone:</label>
         <br>
-        <input type="text" id="phone" name="phone" value="1231231234">
+        <input type="text" id="phone" name="phone">
         <br>
         <label for="password">Password:</label>
         <br>
-        <input type="password" id="password" name="password" value="Test1234@">
+        <input type="password" id="password" name="password">
         <br>
         <label for="passwordConfirm">Password:</label>
         <br>
-        <input type="password" id="passwordConfirm" name="passwordConfirm" value="Test1234@">
+        <input type="password" id="passwordConfirm" name="passwordConfirm">
         <br>
         <input type="submit" value="submit" name="submit">
     </form>
@@ -135,9 +135,8 @@
         $stmt->bind_param("sssss", $username, $email, $phone, $password, $salt);
 
         if ($stmt->execute() === TRUE) {
-            echo "successful account registration!";
-            // navigate to login page
-            header('Location: login.php');
+            echo "<script>alert('successful account registration!');
+                window.location.href = 'login.php';</script>";
         } else {
             echo "Error: " . $stmt->error;
         }

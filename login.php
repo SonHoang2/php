@@ -10,15 +10,15 @@
     <form action="login.php" method="post">
         <label for="email">Email:</label>
         <br>
-        <input type="text" id="email" name="email" value="2@gmail.com">
+        <input type="text" id="email" name="email">
         <br>
         <label for="password">Password:</label>
         <br>
-        <input type="password" id="password" name="password" value="Test1234@">
+        <input type="password" id="password" name="password">
         <br>
         <label for="passwordConfirm">Password:</label>
         <br>
-        <input type="password" id="passwordConfirm" name="passwordConfirm" value="Test1234@">
+        <input type="password" id="passwordConfirm" name="passwordConfirm">
         <br>
         <input type="submit" value="submit" name="submit">
     </form>
@@ -41,13 +41,11 @@
 
     // check if form is submitted
     if (isset($_POST['submit'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $passwordConfirm = $_POST['passwordConfirm'];
+        // fake login
+        $_SESSION['email']="2@gmail.com";
 
-        echo $email;
-
-        $_SESSION['email']=$email;
+        // $_SESSION['role']="admin";
+        $_SESSION['role']="stocker";
 
     } else {
         echo "Form not submitted";
