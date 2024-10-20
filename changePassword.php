@@ -16,7 +16,7 @@
         <input type="password" id="passwordConfirm" name="passwordConfirm" required>
         <input type="submit" value="submit" name="submit">
     </form>
-    
+
     <?php
     session_start();
 
@@ -46,6 +46,11 @@
         $newPassword = $_POST['newPassword'];
         $passwordConfirm = $_POST['passwordConfirm'];
 
+        // check if any field is empty
+        if (empty($password) || empty($newPassword) || empty($passwordConfirm)) {
+            echo "Please fill in all fields";
+            exit;
+        }
 
         // check password match
         if ($newPassword != $passwordConfirm) {
@@ -84,7 +89,7 @@
             $user = $result->fetch_assoc();
             // hash current password with salt in database
             $hashedCurrentPassword = sha1($password . $user['salt']);
-            
+
             if ($hashedCurrentPassword !== $user['password']) {
                 echo "Current password is incorrect";
                 exit;

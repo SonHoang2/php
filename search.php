@@ -24,32 +24,37 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-        // kiểm tra người dùng đã đăng nhập chưa
-        if (!$_SESSION["email"]) {
-            echo "Bạn cần đăng nhập để sử dụng chức năng này";
-            header("Location: login.php");
-            exit;
-        }
-    
-        // Chỉ cho admin truy cập chức năng này
-        if ($_SESSION["role"] != "admin" || !isset($_SESSION["role"])) {
-            echo "Bạn không có quyền truy cập chức năng này";
-            header("Location: index.php");
-            exit;
-        }
-    
-        // check if submit
-        if (isset($_GET['keyword'])) {
-            $keyword = $_GET['keyword'];
-    
+    // kiểm tra người dùng đã đăng nhập chưa
+    if (!$_SESSION["email"]) {
+        echo "Bạn cần đăng nhập để sử dụng chức năng này";
+        header("Location: login.php");
+        exit;
+    }
+
+    // Chỉ cho admin truy cập chức năng này
+    if ($_SESSION["role"] != "admin" || !isset($_SESSION["role"])) {
+        echo "Bạn không có quyền truy cập chức năng này";
+        header("Location: index.php");
+        exit;
+    }
+
+    // check if submit
+    if (isset($_GET['keyword'])) {
+        $keyword = $_GET['keyword'];
+
+        // kiểm tra xem keyword có dữ liệu hay không
+        if (empty($keyword)) {
+            echo "Vui lòng nhập từ khóa tìm kiếm";
+        } else {
             // tìm kiếm sản phẩm theo tên
             $stmt = $conn->prepare("SELECT * FROM products WHERE name LIKE ?");
             $stmt->bind_param("s", $keyword);
             $stmt->execute();
             $result = $stmt->get_result();
-        } else {
-            echo "form chưa được gửi đi";
         }
+    } else {
+        echo "form chưa được gửi đi";
+    }
     ?>
 
     <h1>Tìm kiếm sản phẩm</h1>
